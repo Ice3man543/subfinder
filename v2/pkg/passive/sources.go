@@ -14,6 +14,7 @@ import (
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/crtsh"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/dnsdb"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/dnsdumpster"
+	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/fofa"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/github"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/hackertarget"
 	"github.com/projectdiscovery/subfinder/v2/pkg/subscraping/sources/intelx"
@@ -58,6 +59,7 @@ var DefaultSources = []string{
 	"threatcrowd",
 	"threatminer",
 	"virustotal",
+	"fofa",
 }
 
 // DefaultRecursiveSources contains list of default recursive sources
@@ -110,6 +112,7 @@ var DefaultAllSources = []string{
 	"virustotal",
 	"waybackarchive",
 	"zoomeye",
+	"fofa",
 }
 
 // Agent is a struct for running passive subdomain enumeration
@@ -198,6 +201,8 @@ func (a *Agent) addSources(sources []string) {
 			a.sources[source] = &waybackarchive.Source{}
 		case "zoomeye":
 			a.sources[source] = &zoomeye.Source{}
+		case "fofa":
+			a.sources[source] = &fofa.Source{}
 		}
 	}
 }
