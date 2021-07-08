@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"net"
 	"net/http"
 	"net/url"
 	"time"
@@ -14,7 +15,7 @@ import (
 )
 
 // NewSession creates a new session object for a domain
-func NewSession(domain string, keys *Keys, proxy string, timeout int) (*Session, error) {
+func NewSession(domain string, keys *Keys, proxy string, timeout int, localIP net.IP) (*Session, error) {
 	Transport := &http.Transport{
 		MaxIdleConns:        100,
 		MaxIdleConnsPerHost: 100,
